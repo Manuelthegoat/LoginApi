@@ -2,9 +2,14 @@ const express = require('express')
 const mongoose = require('mongoose')
 const USER = require('./models/userModels')
 const app = express()
-
+const cors = require('cors');
 app.use(express.json())
-
+const corsOptions ={
+    origin:'http://localhost:3001', 
+    credentials:true,            //access-control-allow-credentials:true
+    optionSuccessStatus:200
+}
+app.use(cors(corsOptions));
 app.get("/", (req, res) => {
     res.send("Hello From Homepage")
 })
